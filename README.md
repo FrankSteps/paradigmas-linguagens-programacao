@@ -15,5 +15,6 @@ Para um estudo aprofundado, este repositório contará com partes do software or
 Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## Colaboradores
-| [<img src="https://avatars.githubusercontent.com/u/177877856?v=4" width="115"><br><sub>@franksteps</sub>](https://github.com/franksteps) | [<img src="https://avatars.githubusercontent.com/u/74771669?v=4" width="115"><br><sub>@LuccaDultra</sub>](https://github.com/LuccaDultra) | [<img src="https://avatars.githubusercontent.com/u/156536056?v=4" width="115"><br><sub>@mizaelparis</sub>](https://github.com/mizaelparis) | [<img src="https://avatars.githubusercontent.com/u/110580706?v=4" width="115"><br><sub>@jpasx</sub>](https://github.com/jpasx) |
-| :---: | :---: | :---: | :---: | 
+
+| [<img src="https://avatars.githubusercontent.com/u/177877856?v=4" width="115"><br><sub>@franksteps</sub>](https://github.com/franksteps) | [<img src="https://avatars.githubusercontent.com/u/74771669?v=4" width="115"><br><sub>@LuccaDultra</sub>](https://github.com/LuccaDultra) | [<img src="https://avatars.githubusercontent.com/u/110580706?v=4" width="115"><br><sub>@jpasx</sub>](https://github.com/jpasx) |
+| :---: | :---: | :---: |
