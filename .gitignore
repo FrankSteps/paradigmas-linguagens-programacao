@@ -17,6 +17,7 @@ __pycache__/
 
 
 *.jar
+*.class
 *.war
 *.ear
 target/
