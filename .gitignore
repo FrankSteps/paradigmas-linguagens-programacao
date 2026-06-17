@@ -16,7 +16,7 @@ __pycache__/
 *.pyo
 *.pyd
 
-*.DS_Store
+.DS_Store
 
 *.jar
 *.class
