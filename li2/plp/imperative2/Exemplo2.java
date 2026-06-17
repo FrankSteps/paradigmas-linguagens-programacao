@@ -34,72 +34,54 @@ import li2.plp.imperative2.memory.ContextoExecucaoImperativa2;
  */
 public class Exemplo2 {
 
-    private Comando comando;
-
-    public Exemplo2() {
-        this.comando = construirComando();
-    }
-
-    private Comando construirComando() {
-        Atribuicao corpoP = new Atribuicao(
-                new Id("x"),
-                new ExpSoma(new Id("x"), new Id("y"))
-        );
-
-        ListaDeclaracaoParametro params = new ListaDeclaracaoParametro(
-                new DeclaracaoParametro(new Id("y"), TipoPrimitivo.INTEIRO)
-        );
-
-        DefProcedimento defP = new DefProcedimento(params, corpoP);
-
-        DeclaracaoComposta decExterna = new DeclaracaoComposta(
-                new DeclaracaoVariavel(new Id("x"), new ValorInteiro(0)),
-                new DeclaracaoProcedimento(new Id("p"), defP)
-        );
-
-        ChamadaProcedimento chamadaP3 = new ChamadaProcedimento(
-                new Id("p"),
-                new ListaExpressao(new ValorInteiro(3))
-        );
-
-        SequenciaComando comandosInternos = new SequenciaComando(
-                chamadaP3,
-                new Write(new Id("x"))
-        );
-
-        ComandoDeclaracao blocoInterno = new ComandoDeclaracao(
-                new DeclaracaoVariavel(new Id("x"), new ValorInteiro(1)),
-                comandosInternos
-        );
-
-        ChamadaProcedimento chamadaP4 = new ChamadaProcedimento(
-                new Id("p"),
-                new ListaExpressao(new ValorInteiro(4))
-        );
-
-        SequenciaComando comandosExternos = new SequenciaComando(
-                blocoInterno,
-                new SequenciaComando(chamadaP4, new Write(new Id("x")))
-        );
-
-        return new ComandoDeclaracao(decExterna, comandosExternos);
-    }
-
-    public boolean checaTipo() throws Exception {
-        Programa programa = new Programa(comando);
-        return programa.checaTipo(new ContextoCompilacaoImperativa(new ListaValor()));
-    }
-
-    public ListaValor executar() throws Exception {
-        Programa programa = new Programa(comando);
-        return programa.executar(new ContextoExecucaoImperativa2(new ListaValor()));
-    }
-
     public static void main(String[] args) {
         try {
-            Exemplo2 exemplo = new Exemplo2();
-            if (exemplo.checaTipo()) {
-                ListaValor saida = exemplo.executar();
+            Atribuicao corpoP = new Atribuicao(
+                    new Id("x"),
+                    new ExpSoma(new Id("x"), new Id("y"))
+            );
+
+            ListaDeclaracaoParametro params = new ListaDeclaracaoParametro(
+                    new DeclaracaoParametro(new Id("y"), TipoPrimitivo.INTEIRO)
+            );
+
+            DefProcedimento defP = new DefProcedimento(params, corpoP);
+
+            DeclaracaoComposta decExterna = new DeclaracaoComposta(
+                    new DeclaracaoVariavel(new Id("x"), new ValorInteiro(0)),
+                    new DeclaracaoProcedimento(new Id("p"), defP)
+            );
+
+            ChamadaProcedimento chamadaP3 = new ChamadaProcedimento(
+                    new Id("p"),
+                    new ListaExpressao(new ValorInteiro(3))
+            );
+
+            SequenciaComando comandosInternos = new SequenciaComando(
+                    chamadaP3,
+                    new Write(new Id("x"))
+            );
+
+            ComandoDeclaracao blocoInterno = new ComandoDeclaracao(
+                    new DeclaracaoVariavel(new Id("x"), new ValorInteiro(1)),
+                    comandosInternos
+            );
+
+            ChamadaProcedimento chamadaP4 = new ChamadaProcedimento(
+                    new Id("p"),
+                    new ListaExpressao(new ValorInteiro(4))
+            );
+
+            SequenciaComando comandosExternos = new SequenciaComando(
+                    blocoInterno,
+                    new SequenciaComando(chamadaP4, new Write(new Id("x")))
+            );
+
+            Comando comando = new ComandoDeclaracao(decExterna, comandosExternos);
+
+            Programa programa = new Programa(comando);
+            if (programa.checaTipo(new ContextoCompilacaoImperativa(new ListaValor()))) {
+                ListaValor saida = programa.executar(new ContextoExecucaoImperativa2(new ListaValor()));
                 System.out.print("Resultado: ");
                 ListaValor atual = saida;
                 while (atual != null && atual.getHead() != null) {
@@ -112,7 +94,7 @@ public class Exemplo2 {
             }
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
-            e.printStackTrace();
+            
         }
     }
 }
